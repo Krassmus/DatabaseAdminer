@@ -14,6 +14,11 @@ class AdminerAutologin {
     protected $username;
     protected $database;
     protected $password;
+
+    //disables normal login with loginform
+    function login($login, $password) {
+        return (bool) $GLOBALS['STUDIP_LOGIN'];
+    }
     
 	function credentials() {
         // server, username and password for connecting to database 
@@ -33,6 +38,7 @@ class AdminerAutologin {
             $this->database = $STUDIP_DB_NAME;
             $this->password = $STUDIP_DB_PASSWORD;
             unlink(dirname(__file__)."/../config.php");
+            $GLOBALS['STUDIP_LOGIN'] = true;
         }
     }
 }

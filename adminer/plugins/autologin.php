@@ -37,7 +37,6 @@ class AdminerAutologin {
             $this->username = $STUDIP_DB_USER;
             $this->database = $STUDIP_DB_NAME;
             $this->password = $STUDIP_DB_PASSWORD;
-            unlink(dirname(__file__)."/../config.php");
             $GLOBALS['STUDIP_LOGIN'] = true;
         }
     }

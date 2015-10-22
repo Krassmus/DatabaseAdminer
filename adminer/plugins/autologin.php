@@ -17,7 +17,7 @@ class AdminerAutologin {
 
     //disables normal login with loginform
     function login($login, $password) {
-        return (bool) $GLOBALS['STUDIP_LOGIN'];
+        return (bool) $_SESSION['STUDIP_LOGIN'];
     }
     
 	function credentials() {
@@ -33,12 +33,17 @@ class AdminerAutologin {
     protected function fetchVars() {
         if (file_exists(dirname(__file__)."/../config.php")) {
             include dirname(__file__)."/../config.php";
-            $this->server = $STUDIP_DB_SERVER;
-            $this->username = $STUDIP_DB_USER;
-            $this->database = $STUDIP_DB_NAME;
-            $this->password = $STUDIP_DB_PASSWORD;
-            $GLOBALS['STUDIP_LOGIN'] = true;
+            $_SESSION['STUDIP_DB_SERVER'] = $STUDIP_DB_SERVER;
+            $_SESSION['STUDIP_DB_USER'] = $STUDIP_DB_USER;
+            $_SESSION['STUDIP_DB_NAME'] = $STUDIP_DB_NAME;
+            $_SESSION['STUDIP_DB_PASSWORD'] = $STUDIP_DB_PASSWORD;
+            unlink(dirname(__file__)."/../config.php");
+            $_SESSION['STUDIP_LOGIN'] = true;
         }
+        $this->server = $_SESSION['STUDIP_DB_SERVER'];
+        $this->username = $_SESSION['STUDIP_DB_USER'];
+        $this->database = $_SESSION['STUDIP_DB_NAME'];
+        $this->password = $_SESSION['STUDIP_DB_PASSWORD'];
     }
 }
 

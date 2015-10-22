@@ -1,1 +1,0 @@
-<?php $STUDIP_DB_SERVER = 'localhost'; $STUDIP_DB_USER = 'root'; $STUDIP_DB_NAME = 'kiron_3_2'; $STUDIP_DB_PASSWORD = ''; 

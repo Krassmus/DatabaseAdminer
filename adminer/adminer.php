@@ -28,4 +28,4 @@ function adminer_object() {
 }
 
 // include original Adminer or Adminer Editor
-include dirname(__file__)."/adminer-4.2.1-mysql-en.php";
+include dirname(__file__)."/adminer-4.6.3-mysql-de.php";

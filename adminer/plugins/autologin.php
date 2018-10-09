@@ -17,7 +17,8 @@ class AdminerAutologin {
 
     //disables normal login with loginform
     function login($login, $password) {
-        return (bool) $_SESSION['STUDIP_LOGIN'];
+        //var_dump(get_session('STUDIP_LOGIN')); die();
+        return (bool) get_session('STUDIP_LOGIN'); //$_SESSION['STUDIP_LOGIN'];
     }
     
 	function credentials() {
@@ -31,19 +32,24 @@ class AdminerAutologin {
     }
     
     protected function fetchVars() {
+        restart_session();
         if (file_exists(dirname(__file__)."/../config.php")) {
             include dirname(__file__)."/../config.php";
-            $_SESSION['STUDIP_DB_SERVER'] = $STUDIP_DB_SERVER;
+            set_session('STUDIP_DB_SERVER', $STUDIP_DB_SERVER);
+            set_session('STUDIP_DB_USER', $STUDIP_DB_USER);
+            set_session('STUDIP_DB_NAME', $STUDIP_DB_NAME);
+            set_session('STUDIP_DB_PASSWORD', $STUDIP_DB_PASSWORD);
+            /*$_SESSION['STUDIP_DB_SERVER'] = $STUDIP_DB_SERVER;
             $_SESSION['STUDIP_DB_USER'] = $STUDIP_DB_USER;
             $_SESSION['STUDIP_DB_NAME'] = $STUDIP_DB_NAME;
-            $_SESSION['STUDIP_DB_PASSWORD'] = $STUDIP_DB_PASSWORD;
+            $_SESSION['STUDIP_DB_PASSWORD'] = $STUDIP_DB_PASSWORD;*/
             unlink(dirname(__file__)."/../config.php");
-            $_SESSION['STUDIP_LOGIN'] = true;
+            set_session('STUDIP_LOGIN', true);
         }
-        $this->server = $_SESSION['STUDIP_DB_SERVER'];
-        $this->username = $_SESSION['STUDIP_DB_USER'];
-        $this->database = $_SESSION['STUDIP_DB_NAME'];
-        $this->password = $_SESSION['STUDIP_DB_PASSWORD'];
+        $this->server = get_session('STUDIP_DB_SERVER'); //$_SESSION['STUDIP_DB_SERVER'];
+        $this->username = get_session('STUDIP_DB_USER'); //$_SESSION['STUDIP_DB_USER'];
+        $this->database = get_session('STUDIP_DB_NAME'); //$_SESSION['STUDIP_DB_NAME'];
+        $this->password = get_session('STUDIP_DB_PASSWORD'); //$_SESSION['STUDIP_DB_PASSWORD'];
     }
 }
 

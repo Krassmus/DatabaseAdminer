@@ -2,27 +2,29 @@
 
 /*
  *  Copyright (c) 2012  Rasmus Fuhse <fuhse@data-quest.de>
- * 
+ *
  *  This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License as
  *  published by the Free Software Foundation; either version 2 of
  *  the License, or (at your option) any later version.
  */
 
-class AdminerAutologin {
+class AdminerAutologin
+{
     protected $server;
     protected $username;
     protected $database;
     protected $password;
 
     //disables normal login with loginform
-    function login($login, $password) {
-        //var_dump(get_session('STUDIP_LOGIN')); die();
+    function login($login, $password)
+    {
         return (bool) get_session('STUDIP_LOGIN'); //$_SESSION['STUDIP_LOGIN'];
     }
-    
-	function credentials() {
-        // server, username and password for connecting to database 
+
+	function credentials()
+    {
+        // server, username and password for connecting to database
         $this->fetchVars();
         return array(
             $this->server,
@@ -30,8 +32,9 @@ class AdminerAutologin {
             $this->password
         );
     }
-    
-    protected function fetchVars() {
+
+    protected function fetchVars()
+    {
         restart_session();
         if (file_exists(dirname(__file__)."/../config.php")) {
             include dirname(__file__)."/../config.php";

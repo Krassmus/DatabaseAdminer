@@ -90,6 +90,7 @@ class AdminerPlugin extends Adminer {
 
     // applyPlugin
 
+
     function name() {
         $args = func_get_args();
         return $this->_applyPlugin(__FUNCTION__, $args);
@@ -106,6 +107,11 @@ class AdminerPlugin extends Adminer {
     }
 
     function permanentLogin($create = false) {
+        $args = func_get_args();
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function bruteForceKey() {
         $args = func_get_args();
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
@@ -394,5 +400,6 @@ class AdminerPlugin extends Adminer {
         $args = func_get_args();
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
+
 
 }

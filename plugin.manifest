@@ -1,6 +1,6 @@
 pluginname=DatabaseAdminer
 pluginclassname=DatabaseAdminer
-version=1.3
+version=1.4
 origin=RasmusFuhse
-studipMinVersion=3.1
-studipMaxVersion=4.3
+studipMinVersion=4.0
+studipMaxVersion=4.7

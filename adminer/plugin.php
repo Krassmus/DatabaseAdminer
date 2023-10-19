@@ -18,7 +18,7 @@ class AdminerPlugin extends Adminer {
     }
 
     /** Register plugins
-     * @param array object instances or null to register all classes starting by 'Adminer'
+     * @param array object instances or null to register all lib starting by 'Adminer'
      */
     function __construct($plugins) {
         if ($plugins === null) {
